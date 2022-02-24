@@ -1,6 +1,5 @@
 import Seo from "../components/Seo";
 import { useRouter } from "next/router";
-import Link from "next/link";
 
 export default function Home(props) {
   const router = useRouter();
@@ -11,34 +10,14 @@ export default function Home(props) {
         <div
           onClick={() =>
             router.push(
-              {
-                pathname: `/movies/${movie.id}`,
-                query: {
-                  title: movie.original_title,
-                  poster: movie.poster_path,
-                },
-              },
-              `/movies/${movie.id}`
+              `/movies/${movie.original_title}/${movie.poster_path}/${movie.id}`
             )
           }
           className="movie"
           key={movie.id}
         >
           <img src={`https:/image.tmdb.org/t/p/w500/${movie.poster_path}`} />
-          {/* <Link
-            href={{
-              pathname: `/movies/${movie.id}`,
-              query: {
-                title: movie.original_title,
-                poster: movie.poster_path,
-              },
-            }}
-            as={`/movies/${movie.id}`}
-          >
-            <a> */}
           <h4>{movie.original_title}</h4>
-          {/* </a>
-          </Link> */}
         </div>
       ))}
       <style jsx>{`
